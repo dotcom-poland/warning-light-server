@@ -1,17 +1,13 @@
 name: CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: []
 
 jobs:
-  build:
+  fail:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v2
-
-      - name: Fails the job
-        run: exit 1
+      - run: exit 1
+      - name: Failure notification
+        if: always()
+        run: curl -XPOST ${{ secrets.NOTIFICATION_URL }}
