@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Star notification
-        run: curl -XPOST ${{ secrets.NOTIFICATION_URL }}
+        run: curl -XPOST -s -o /dev/null ${{ secrets.NOTIFICATION_URL }}
