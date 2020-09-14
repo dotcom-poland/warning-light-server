@@ -1,13 +1,12 @@
 name: CI
 
-on: []
+on:
+  watch:
+    types: [started]
 
 jobs:
-  fail:
+  notification:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: exit 1
-      - name: Failure notification
-        if: always()
+      - name: Star notification
         run: curl -XPOST ${{ secrets.NOTIFICATION_URL }}
